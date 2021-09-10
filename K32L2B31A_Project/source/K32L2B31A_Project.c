@@ -19,14 +19,27 @@
 #include "clock_config.h"
 #include "K32L2B31A.h"
 #include "fsl_debug_console.h"
+#include "led.h"
 /* TODO: insert other include files here. */
 
 /* TODO: insert other definitions and declarations here. */
 unsigned int test_global_var=100;
 float dato_float=3.416;
-/*
- * @brief   Application entry point.
+/*******************************************************************************
+ * Private Source Code
+ ********************************************************************************/
+ /*!
+ * @brief genera bloqueo de microcontrolador por tiempo fijo
+ *
  */
+void delay_block(void){
+	uint32_t i;
+	for(i=0;i<0xFFFFF;i++){
+
+	}
+}
+
+
 int main(void) {
 	 volatile static int i = 0 ; /* Force the counter to be placed into memory. */
 
@@ -44,10 +57,16 @@ int main(void) {
     printf("dato_float:%g\r\n",dato_float);
 
 
+
+
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
         i++ ;
-        printf("i:%u/r/n",i);
+        printf("i:%u\r\n",i);
+        encender_led_verde();
+        delay_block();
+        apagar_led_verde();
+        delay_block();
 
     }
     return 0 ;
